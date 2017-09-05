@@ -1,10 +1,16 @@
 $(document).ready(function(){
 var philosophers = ["Siddhārtha Gautama", "Friedrich Nietzsche","Alan Watts", "George Orwell", "Aldus Huxly"]
 function renderButtons() {
-    $(".buttons").empty()
+    $(".buttons").empty();
   for (i=0;i < philosophers.length;i++){
-    $("<button id='mybutton'>" + philosophers[i]+ "</button>").appendTo(".buttons")
+      var p = $("<button>");
+      p.attr("data-name", philosophers[i]);
+      p.addClass("pButton");
+      p.text(philosophers[i])
+      $(".buttons").append(p)
+    
   }
+  
   }
 $("#add-philo").on("click", function(event){
     event.preventDefault();
@@ -12,5 +18,10 @@ $("#add-philo").on("click", function(event){
     philosophers.push(newPhilo);
     renderButtons()
 })
+function createGif(){
+    console.log($(this).attr("data-name"))
+}
+$(document).on("click", ".pButton", createGif)
 renderButtons()
+
 })
