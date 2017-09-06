@@ -45,26 +45,31 @@ $.ajax({
       var p = $("<p>").text("Rating: " + rating);
 
       var personImage = $("<img class='image'>");
-      var stateStill = results[i].images.fixed_width_still.url
-      var stateAnimate = results[i].images.fixed_width.url
-      personImage.attr("src", stateAnimate);
-
+     
+      personImage.attr("src", results[i].images.fixed_width_still.url);
+      personImage.attr("data-animate",results[i].images.fixed_width.url);
+      personImage.attr("data-still", results[i].images.fixed_width_still.url);
+      personImage.attr("data-state", "still")
       gifDiv.prepend(p);
       gifDiv.prepend(personImage);
 
       $(".gif").prepend(gifDiv);
       
-     
+    
 }
+$(document).on("click", ".image", function(){
+    var state = $(this).data('state')
  
-$(document).on("click", ".gif", function(){
-    if (this.src==stateStill) {
-        this.src=stateAnimate
-    }
-    else {
-        this.src = stateStill
-    }
+    if (state == "still"){
+        $(this).attr("src",$(this).data("animate"));
+        $(this).data("state", "animate")
+      }
+      else if (state == "animate"){
+        $(this).attr("src",$(this).data("still"));
+        $(this).data("state", "still")
+      }
+ 
+ })
 
-})
 })}
 })
