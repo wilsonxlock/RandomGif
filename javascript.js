@@ -3,7 +3,7 @@ var philosophers = ["Siddhārtha Gautama", "Friedrich Nietzsche","Alan Watts", "
 function renderButtons() {
     $(".buttons").empty();
   for (i=0;i < philosophers.length;i++){
-      var p = $("<button>");
+      var p = $("<button class='btn btn-primary'>");
       p.attr("data-name", philosophers[i]);
       p.addClass("pButton");
       p.text(philosophers[i])
