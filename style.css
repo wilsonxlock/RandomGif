@@ -1,0 +1,6 @@
+body {
+    background-image: -webkit-gradient(linear, left top, left bottom, lightblue, to(black));
+    background-image: -webkit-linear-gradient(lightblue, black);
+    background-image: -moz-linear-gradient(lightblue, black);
+    background-image: linear-gradient(lightblue, black);
+}
